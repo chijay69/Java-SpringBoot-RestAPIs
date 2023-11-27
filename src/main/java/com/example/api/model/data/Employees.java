@@ -10,9 +10,11 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Employee {
+public class Employees {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String registrationCode;
     private String pin;
+    private String firstname;
+    private String othernames;
+    private String gender;
 }

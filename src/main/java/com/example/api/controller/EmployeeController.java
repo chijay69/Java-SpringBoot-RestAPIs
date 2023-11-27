@@ -27,4 +27,10 @@ public class EmployeeController {
         log.info("Time taken: " + duration + " milliseconds");
         return ResponseEntity.ok(result);
     }
+
+    @GetMapping("data/{pin}")
+    public ResponseEntity<?> findEmployee(@PathVariable String pin){
+        return ResponseEntity.ok(employeeService.findEmployee(pin));
+    }
+
 }
