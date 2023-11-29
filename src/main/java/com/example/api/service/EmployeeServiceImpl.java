@@ -4,10 +4,12 @@ package com.example.api.service;
 
 import com.example.api.exceptions.UserException;
 import com.example.api.model.data.Employees;
+import com.example.api.model.dto.EmployeeDto;
 import com.example.api.model.dto.request.UpdateEmailDto;
 import com.example.api.repo.EmployeeRepo;
 import io.micrometer.common.util.StringUtils;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -19,6 +21,7 @@ import static com.example.api.utils.ConstantUtils.*;
 @RequiredArgsConstructor
 public class EmployeeServiceImpl implements EmployeeService{
     private final EmployeeRepo employeeRepo;
+    private final ModelMapper modelMapper;
 
     @Override
     public Boolean confirmEmployee(String employeePin) {
@@ -33,14 +36,15 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
 
     @Override
-    public Employees updateEmail(UpdateEmailDto updateEmailDto) {
+    public EmployeeDto updateEmail(UpdateEmailDto updateEmailDto) {
         if (isBlank(updateEmailDto.getPin())) throw new UserException(INVALID_PIN);
         Employees employee = findEmployee(updateEmailDto.getPin());
         if (!emailIsValid(updateEmailDto.getEmail())) throw new UserException(INVALID_EMAIL);
         Optional<Employees> employeeByEmail = employeeRepo.findEmployeesByEmail(updateEmailDto.getEmail());
         if (employeeByEmail.isPresent()) throw new UserException(EMAIL_ALREADY_EXIST);
         employee.setEmail(updateEmailDto.getEmail());
-        return employeeRepo.save(employee);
+        Employees savedEmployee = employeeRepo.save(employee);
+        return modelMapper.map(savedEmployee, EmployeeDto.class);
     }
 
     private boolean emailIsValid(String email) {
