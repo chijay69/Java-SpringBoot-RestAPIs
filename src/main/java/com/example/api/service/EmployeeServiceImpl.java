@@ -22,7 +22,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     @Override
     public Boolean confirmEmployee(String employeePin) {
-        if (StringUtils.isBlank(employeePin)) throw new UserException(INVALID_PIN);
+        if (isBlank(employeePin)) throw new UserException(INVALID_PIN);
         return employeeRepo.existsByPin(employeePin);
     }
 
@@ -34,6 +34,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     @Override
     public Employees updateEmail(UpdateEmailDto updateEmailDto) {
+        if (isBlank(updateEmailDto.getPin())) throw new UserException(INVALID_PIN);
         Employees employee = findEmployee(updateEmailDto.getPin());
         if (!emailIsValid(updateEmailDto.getEmail())) throw new UserException(INVALID_EMAIL);
         Optional<Employees> employeeByEmail = employeeRepo.findEmployeesByEmail(updateEmailDto.getEmail());
@@ -44,6 +45,10 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     private boolean emailIsValid(String email) {
         return email.matches("^[A-Za-z0-9+_.-]+@(.+)$");
+    }
+
+    private boolean isBlank(String pin) {
+        return StringUtils.isBlank(pin);
     }
 
 }
