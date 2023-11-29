@@ -1,6 +1,6 @@
 package com.example.api.controller;
 
-import com.example.api.model.dto.GenerateLetterRequest;
+import com.example.api.model.dto.request.GenerateLetterRequest;
 import com.example.api.service.LetterService;
 import org.springframework.web.bind.annotation.*;
 

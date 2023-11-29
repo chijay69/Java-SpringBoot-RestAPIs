@@ -1,14 +1,12 @@
 package com.example.api.controller;
 
+import com.example.api.model.dto.request.UpdateEmailDto;
 import com.example.api.service.EmployeeService;
-import com.example.api.service.LetterService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/employee")
@@ -31,7 +29,8 @@ public class EmployeeController {
     public ResponseEntity<?> findEmployee(@PathVariable String pin){
         return ResponseEntity.ok(employeeService.findEmployee(pin));
     }
-
-
-
+    @PatchMapping("data/email")
+    public ResponseEntity<?> updateEmail(@Valid @RequestBody UpdateEmailDto updateEmailDto){
+        return ResponseEntity.ok(employeeService.updateEmail(updateEmailDto));
+    }
 }

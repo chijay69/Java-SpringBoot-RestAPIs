@@ -19,8 +19,4 @@ public class Location {
     private String email;
     @JsonProperty("addressedTo")
     private String addressedTo;
-
-
-    // Getters and setters
-    // You might also want to override toString() for easy printing
 }
