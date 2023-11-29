@@ -1,9 +1,9 @@
 package com.example.api.service;
 
-import com.example.api.model.data.EmployeeDto;
 import com.example.api.model.data.Employees;
+import com.example.api.model.dto.EmployeeDto;
 
 public interface EmployeeService {
     Boolean confirmEmployee(String employeePin);
-    EmployeeDto findEmployee(String pin);
+    Employees findEmployee(String pin);
 }

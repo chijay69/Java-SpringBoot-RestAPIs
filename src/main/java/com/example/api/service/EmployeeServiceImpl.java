@@ -1,22 +1,18 @@
 package com.example.api.service;
 
 
-import com.example.api.model.data.EmployeeDto;
+
 import com.example.api.model.data.Employees;
 import com.example.api.repo.EmployeeRepo;
 import io.micrometer.common.util.StringUtils;
 import lombok.RequiredArgsConstructor;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 
 @Service
 @RequiredArgsConstructor
 public class EmployeeServiceImpl implements EmployeeService{
     private final EmployeeRepo employeeRepo;
-    private final ModelMapper modelMapper;
 
     @Override
     public Boolean confirmEmployee(String employeePin) {
@@ -25,9 +21,8 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
 
     @Override
-    public EmployeeDto findEmployee(String pin) {
-        Employees employee = employeeRepo.findEmployeesByPin(pin)
+    public Employees findEmployee(String pin) {
+        return employeeRepo.findEmployeesByPin(pin)
                 .orElseThrow(() -> new RuntimeException("Employee does not exist"));
-        return modelMapper.map(employee, EmployeeDto.class);
     }
 }
