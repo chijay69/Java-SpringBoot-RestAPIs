@@ -35,9 +35,9 @@ public class EmployeeServiceImpl implements EmployeeService{
     @Override
     public Employees updateEmail(UpdateEmailDto updateEmailDto) {
         Employees employee = findEmployee(updateEmailDto.getPin());
+        if (!emailIsValid(updateEmailDto.getEmail())) throw new UserException(INVALID_EMAIL);
         Optional<Employees> employeeByEmail = employeeRepo.findEmployeesByEmail(updateEmailDto.getEmail());
         if (employeeByEmail.isPresent()) throw new UserException(EMAIL_ALREADY_EXIST);
-        if (!emailIsValid(updateEmailDto.getEmail())) throw new UserException(INVALID_EMAIL);
         employee.setEmail(updateEmailDto.getEmail());
         return employeeRepo.save(employee);
     }
@@ -45,4 +45,5 @@ public class EmployeeServiceImpl implements EmployeeService{
     private boolean emailIsValid(String email) {
         return email.matches("^[A-Za-z0-9+_.-]+@(.+)$");
     }
+
 }
