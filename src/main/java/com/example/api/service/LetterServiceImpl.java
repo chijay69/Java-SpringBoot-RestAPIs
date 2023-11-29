@@ -2,8 +2,7 @@ package com.example.api.service;
 
 import com.example.api.model.data.Employees;
 import com.example.api.model.data.Location;
-import com.example.api.model.dto.EmployeeDto;
-import com.example.api.model.dto.GenerateLetterRequest;
+import com.example.api.model.dto.request.GenerateLetterRequest;
 import com.example.api.pdf.LetterGenerator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -12,10 +12,8 @@ import lombok.Setter;
 @Setter
 public class Employees {
     @Id
-//    private String registrationCode;
     private String pin;
     private String firstname;
     private String surname;
-//    private String othernames;
-//    private String gender;
+    private String email;
 }
