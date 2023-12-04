@@ -13,7 +13,7 @@ public class LetterController {
         this.letterService = letterService;
     }
 
-    @PostMapping()
+    @PostMapping("/getEmbassyLetter")
     public String generateLetter(@RequestBody GenerateLetterRequest request){
 
         return letterService.generateEmployeeLetter(request);

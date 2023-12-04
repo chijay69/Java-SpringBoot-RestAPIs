@@ -14,12 +14,13 @@ import java.util.stream.Collectors;
 
 @Service
 public class AddressRetrieverService {
-    private List<CountryInfo> countryInfoList;
+    private final List<CountryInfo> countryInfoList;
 
     public AddressRetrieverService() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
+
         // Assuming your JSON file is named data.json
-        File jsonFile = new File("src/main/resources/pdf/Data.json");
+        File jsonFile = new File("src/main/java/com/example/api/service/Data.json");
         countryInfoList = mapper.readValue(jsonFile, new TypeReference<List<CountryInfo>>() {});
     }
 
