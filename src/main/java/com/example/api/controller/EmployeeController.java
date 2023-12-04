@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/employee")
+@RequestMapping("/api/employee")
 @Slf4j
 @AllArgsConstructor
 public class EmployeeController {
@@ -30,7 +30,7 @@ public class EmployeeController {
         return ResponseEntity.ok(employeeService.findEmployee(pin));
     }
     @PatchMapping("data/email")
-    public ResponseEntity<?> updateEmail(@Valid @RequestBody UpdateEmailDto updateEmailDto){
+    public ResponseEntity<?> updateEmail(@RequestBody UpdateEmailDto updateEmailDto){
         return ResponseEntity.ok(employeeService.updateEmail(updateEmailDto));
     }
 }

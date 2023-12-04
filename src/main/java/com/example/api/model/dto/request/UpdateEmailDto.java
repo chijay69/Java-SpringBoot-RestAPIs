@@ -10,6 +10,6 @@ import lombok.Setter;
 public class UpdateEmailDto {
     @NotBlank(message = "Pin cannot be blank")
     private String pin;
-    @Email(regexp = "^[A-Za-z0-9+_.-]+@(.+)$", message = "Provide valid email address")
+    @Email(regexp = "^[A-Za-z0-9+_.-]+@(.+)$", message = "Provide a valid email address")
     private String email;
 }

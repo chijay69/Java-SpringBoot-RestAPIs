@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### ppt file ###
+application-local.properties

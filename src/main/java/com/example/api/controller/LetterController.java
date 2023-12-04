@@ -5,7 +5,7 @@ import com.example.api.service.LetterService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/letter")
+@RequestMapping("/api/letter")
 public class LetterController {
     private final LetterService letterService;
 

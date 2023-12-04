@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @Table(name = "SCHEMES")
-public class Schemes {
+public class Scheme {
     @Id
     @Column(name = "SCHEME_ID", precision = 10, scale = 0, nullable = false)
     private Long schemeId;
