@@ -21,7 +21,8 @@ public class AddressRetrieverService {
 
         // Assuming your JSON file is named data.json
         File jsonFile = new File("src/main/java/com/example/api/service/Data.json");
-        countryInfoList = mapper.readValue(jsonFile, new TypeReference<List<CountryInfo>>() {});
+        countryInfoList = mapper.readValue(jsonFile, new TypeReference<>() {
+        });
     }
 
     public Location getAddressByCountryAndState(String country, String state) {
