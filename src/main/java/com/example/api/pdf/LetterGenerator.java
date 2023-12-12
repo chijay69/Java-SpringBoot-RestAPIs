@@ -165,16 +165,11 @@ public class LetterGenerator {
             contentStream.newLineAtOffset(startX1, yCordinate2+leading);
 
 
-            String text = """
-We refer to the above subject matter.
-
-Kindly note that Mr. Alozie Chijindu Victor is registered with CrusaderSterling Pensions Limited, and his account is funded till date.
-
-By regulations (Pensions Reform Act 2014), his contributions can be accessed upon retirement.
-
-However, where he voluntarily disengages from employment before the age of 50 years, he is eligible to withdraw an amount not exceeding 25% of his balance, after four months of disengagement.
-
-Kindly accord him all the necessary assistance.""";
+            String text = "We refer to the above subject matter.\n " +
+                    "Kindly note that " + name +  " is registered with CrusaderSterling Pensions Limited, and his account is funded till date.\n" +
+                    "By regulations (Pensions Reform Act 2014), his contributions can be accessed upon retirement.\n" +
+                    "However, where he voluntarily disengages from employment before the age of 50 years, he is eligible to withdraw an amount not exceeding 25% of his balance, after four months of disengagement.\n " +
+                    "Kindly accord him all the necessary assistance.";
 
             // Splitting text into paragraphs
             String[] paragraphs = text.split("(?<=\\.\\n)");
