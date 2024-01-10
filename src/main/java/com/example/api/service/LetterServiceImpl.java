@@ -40,11 +40,13 @@ public class LetterServiceImpl implements LetterService{
         sendMailDto.setFrom(from);
         sendMailDto.setTo(employee.getEmail());
         sendMailDto.setSubject("Introduction Letter");
-        String message = "Dear Valued Customer,\n" +
-                " \n" +
-                "Kindly find attached your Introduction Letter to the Embassy.\n" +
-                " \n" +
-                "Thank you for choosing CrusaderSterling Pensions as your preferred PFA.\n";
+        String message = """
+                Dear Valued Customer,
+                \s
+                Kindly find attached your Introduction Letter to the Embassy.
+                \s
+                Thank you for choosing CrusaderSterling Pensions as your preferred PFA.
+                """;
         sendMailDto.setMessage(message);
         return sendMailDto;
     }
